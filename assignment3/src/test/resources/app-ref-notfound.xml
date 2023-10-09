@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<beans>
+    <bean id="1" class="dao.impl.BlackFish"/>
+    <bean id="2" class="dao.impl.WhiteCat">
+        <property name="Fish" ref="4"/>
+    </bean>
+
+</beans>
+
