@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+</head>
+<body>
+    <div id="app" style="padding-right: 40px; padding-left: 40px; padding-bottom: 50px;">
+        <el-card style="padding-right: 20px; padding-left: 20px; padding-bottom: 40px;" header="商品事务">
+            <el-row>
+                <el-col :xs="24" :md= "12">
+                    <el-input placeholder="请输入条件" v-model="keyword" class="input-with-select">
+                        <el-button slot="append" icon="el-icon-search"  @click="query"></el-button>
+                    </el-input>
+                </el-col>
+                <el-col style="left: 0px; padding-left: 20px;" :xs="24" :md="12" v-if="true">
+                    <el-button @click="showAdd()">添加</el-button>
+                </el-col>
+            </el-row>
+
+            <el-table style="top: 20px;" :data="commodities" :fit="true" :show-header="true">
+                <el-table-column prop="id" label="Id">
+                </el-table-column>
+                <el-table-column prop="type" label="商品种类">
+                </el-table-column>
+                <el-table-column prop="price" label="价格">
+                </el-table-column>
+                <el-table-column prop="amount" label="数量">
+                </el-table-column>
+                <el-table-column prop="proDate" label="生产日期">
+                </el-table-column>
+                <el-table-column prop="sellByDate" label="保质期">
+                </el-table-column>
+                <el-table-column label="操作" fixed="right" width="200px">
+                    <template slot-scope="scope">
+                        <el-button mc-type="column-el-button" size="mini" type="primary" @click="showEdit(scope.row)">编辑</el-button>
+                        <el-button mc-type="column-el-button" size="mini" type="danger" @click="deleteCommodity(scope.row)">删除</el-button>
+                    </template>
+                </el-table-column>
+            </el-table>
+
+        </el-card>
+
+        <el-dialog title="商品信息" :visible.async="dialogVisible" width="30%" @close="dialogVisible=false">
+            <el-form label-width="100px">
+                <el-form-item label="Id">
+                    <el-input type="number" v-model.number="currentCommodity.id" placeholder="请输入内容">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="种类">
+                    <el-input v-model="currentCommodity.type" placeholder="请输入内容">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="价格">
+                    <el-input v-model="currentCommodity.price" placeholder="请输入内容">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="数量">
+                    <el-input v-model="currentCommodity.amount" placeholder="请输入内容">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="生产日期">
+                    <el-input v-model="currentCommodity.proDate" placeholder="请输入内容">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="保质期">
+                    <el-input v-model="currentCommodity.sellByDate" placeholder="请输入内容">
+                    </el-input>
+                </el-form-item>
+                <el-form-item style="text-align: right;">
+                    <el-button @click="dialogVisible=false">取 消</el-button>
+                    <el-button type="primary" @click="saveCommodity()">确 定</el-button>
+                </el-form-item>
+            </el-form>
+        </el-dialog>
+
+
+    </div>
+</body>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<!-- 自己的js代码-->
+<script src="js/commodity.js"></script>
+
+</html>
