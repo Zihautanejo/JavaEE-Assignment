@@ -1,0 +1,5 @@
+edu\whu\demo\service\ProductService.class
+edu\whu\demo\aspect\LogAspect.class
+edu\whu\demo\controller\ProductController.class
+edu\whu\demo\DemoApplication.class
+edu\whu\demo\entity\Product.class
